@@ -12,6 +12,9 @@ class User(UserMixin):
     def get_id(self):
         return str(self.id)
     
+    def get_passwords(self):
+        return str(self.passwords)
+    
     @staticmethod
     def get(user_id):
         mysql_db = conn_mysqldb()
@@ -51,7 +54,7 @@ class User(UserMixin):
             mysql_db.commit()
             return User.find(username)
         else:
-            return user
+            return None
     
     @staticmethod
     def delete(user_id):
